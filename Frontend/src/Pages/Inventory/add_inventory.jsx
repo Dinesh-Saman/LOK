@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TextField, Button, MenuItem, FormControl, Select, InputLabel, Box, Typography, FormHelperText } from '@material-ui/core';
-import Sidebar from './../Dashboard/InventoryDashboard';
+import Sidebar from '../../Components/sidebar';
 import Header from '../../Components/guest_header'; 
 import axios from 'axios';
 import swal from 'sweetalert';

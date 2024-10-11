@@ -7,10 +7,10 @@ const reviewSchema = new Schema({
     ref: 'Menu',
     required: true,
   },
-  user: { // New field to reference the User model
+  user: { 
     type: Schema.Types.ObjectId,
-    ref: 'User', // Ensure this matches the name of your user model
-    required: true, // Optional: make this required based on your requirements
+    ref: 'User', 
+    required: true, 
   },
   foodName: {
     type: String,

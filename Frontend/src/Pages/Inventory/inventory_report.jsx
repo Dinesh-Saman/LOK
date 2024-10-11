@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Sidebar from './../Dashboard/InventoryDashboard';
+import Sidebar from '../../Components/sidebar';
 import Header from '../../Components/guest_header'; 
 import axios from 'axios';
 import jsPDF from 'jspdf';

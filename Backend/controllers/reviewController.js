@@ -93,7 +93,7 @@ exports.getReviewById = async (req, res) => {
     // Find review by ID and populate related menuItem and user fields
     const review = await Review.findById(id)
       .populate('menuItem', 'menuItemName category menuImage')  // Populate menuItem details
-      .populate('user', 'firstName', 'emailAddress');  // Populate user details
+      .populate('user', 'firstName');  // Populate user details
 
     // Handle case where no review is found
     if (!review) {
@@ -162,7 +162,7 @@ exports.getReviewsByMenuItemId = async (req, res) => {
 
     const reviews = await Review.find({ menuItem: menuItemId })
       .populate('menuItem', 'menuItemName category price servingSize')
-      .populate('user', 'firstName', 'emailAddress'); // Populate user info
+      .populate('user', 'firstName'); // Populate user info
     if (!reviews || reviews.length === 0) {
       return res.status(404).json({ message: "No reviews found for this menu item!" });
     }
@@ -214,7 +214,7 @@ exports.approveReview = async (req, res) => {
       from: process.env.EMAIL_USER, // Sender address (use the same email as in transporter)
       to: review.user.emailAddress, // User's email address
       subject: 'Your Review has been Approved!',
-      text: `Hello ${review.user.firstName},\n\nYour review for the menu item "${review.foodName}" has been approved and is now published on the menu page.\n\nThank you for your review!\n\nBest regards,\nLand of Kings`,
+      text: `Hello ${review.user.firstName},\n\nYour review for the menu item "${review.menuItem.menuItemName}" has been approved and is now published on the menu page.\n\nThank you for your review!\n\nBest regards,\nLand of Kings`,
     };
 
     transporter.sendMail(mailOptions, (error, info) => {

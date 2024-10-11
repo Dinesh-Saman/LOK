@@ -118,7 +118,6 @@ const Chatbot = ({ userReview }) => {
     if (userReview) {
       handleNewMessage(userReview);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userReview]);
 
   const handleNewMessage = async (review) => {
